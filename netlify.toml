@@ -1,20 +1,16 @@
+# Configurazione per la build di un progetto Vite/React
 [build]
+  # Specifica il comando da eseguire per la build
   command = "npm run build"
-  publish = "build"
+  
+  # Specifica la cartella che Netlify deve pubblicare
+  publish = "dist"
 
-[context.production.environment]
-  NODE_ENV = "production"
+  # Imposta il percorso base su "/" per risolvere eventuali problemi di routing (anche se non strettamente necessario per Netlify)
+  base = "/"
 
+# Impostazioni per il reindirizzamento (utile per SPA come React)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Cache-Control = "public, max-age=0, must-revalidate"
