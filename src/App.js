@@ -1,5 +1,3 @@
-src/App.js
-
 import React from "react";
 import Header from "./component/Header";
 import Services from "./component/Services";
@@ -9,8 +7,7 @@ import Footer from "./component/Footer";
 export default function App() {
   return (
     <div className="app">
-      {/* Header ora contiene l'intestazione e la sezione Hero */}
-      <Header /> 
+      <Header />
       <main>
         <Services />
       </main>
@@ -19,3 +16,4 @@ export default function App() {
     </div>
   );
 }
+
