@@ -4,7 +4,7 @@
   command = "npm run build"
   
   # Specifica la cartella che Netlify deve pubblicare
-  publish = "dist"
+  publish = "build"
 
   # Imposta il percorso base su "/" per risolvere eventuali problemi di routing (anche se non strettamente necessario per Netlify)
   base = "/"
