@@ -5,8 +5,11 @@
   "description": "Landing page React per impianti elettrici civili e industriali",
   "main": "src/index.js",
   "scripts": {
+    "prestart": "node ./scripts/copyIndex.js",
     "start": "react-scripts start",
+    "prebuild": "node ./scripts/copyIndex.js",
     "build": "react-scripts build",
+    "postbuild": "cp public/sitemap.xml build/sitemap.xml || true",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
