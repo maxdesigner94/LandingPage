@@ -2,27 +2,33 @@ import React, { useEffect, useRef } from "react";
 
 export default function ElectricFish(){
   const wrapRef = useRef(null);
+  const rafRef = useRef(null);
 
   useEffect(()=>{
     const el = wrapRef.current;
     if(!el) return;
-    let rafId = null;
+    let running = true;
 
     function update(){
-      const y = window.scrollY || window.pageYOffset;
+      if(!running) return;
+      const y = window.scrollY || window.pageYOffset || 0;
       const top = 60 + y * 0.55;
       el.style.top = `${top}px`;
-      const sway = Math.sin((y/80)) * 8;
+      const sway = Math.sin((y / 80)) * 8;
       el.style.transform = `translateX(${sway}px)`;
-      rafId = requestAnimationFrame(update);
+      rafRef.current = requestAnimationFrame(update);
     }
-    rafId = requestAnimationFrame(update);
-    return ()=> cancelAnimationFrame(rafId);
+    rafRef.current = requestAnimationFrame(update);
+
+    return ()=>{
+      running = false;
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   },[]);
 
   return (
-    <div id="electric-fish" ref={wrapRef} aria-hidden>
-      <svg viewBox="0 0 220 90" width="220" height="90" xmlns="http://www.w3.org/2000/svg">
+    <div id="electric-fish" ref={wrapRef} aria-hidden="true">
+      <svg viewBox="0 0 220 90" width="220" height="90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decorazione">
         <defs>
           <linearGradient id="fishGrad" x1="0" x2="1">
             <stop offset="0" stopColor="#00AEEF"/>
