@@ -1,10 +1,10 @@
 src/App.js
 
 import React from "react";
-import Header from "./components/Header";
-import Services from "./components/Services";
-import ElectricFish from "./components/ElectricFish";
-import Footer from "./components/Footer";
+import Header from "./component/Header";
+import Services from "./component/Services";
+import ElectricFish from "./component/ElectricFish";
+import Footer from "./component/Footer";
 
 export default function App() {
   return (
