@@ -1,4 +1,4 @@
-src/components/Header.js
+src/component/Header.js
 
 import React, { useEffect, useRef } from "react";
 
