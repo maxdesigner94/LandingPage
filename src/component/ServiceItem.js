@@ -3,8 +3,8 @@ import React from "react";
 export default function ServiceItem({ service, index }){
   const isReverse = index % 2 === 1;
   return (
-    <article className={`service ${isReverse ? "reverse" : ""}`} aria-labelledby={`s-${service.id}`}>
-      <div className="media" aria-hidden>
+    <article className={`service ${isReverse ? "reverse" : ""}`} aria-labelledby={`s-${service.id}`} role="article">
+      <div className="media" aria-hidden="true">
         <svg className="icon-svg" viewBox="0 0 120 120" role="img" aria-label={service.title}>
           <defs>
             <linearGradient id={`g-${service.id}`} x1="0" x2="1">
@@ -21,7 +21,7 @@ export default function ServiceItem({ service, index }){
       <div className="content">
         <h3 id={`s-${service.id}`}>{service.title}</h3>
         <p>{service.text}</p>
-        <a className="cta" href="#contatti" aria-label={`Contatta per ${service.title}`}>Richiedi informazioni</a>
+        <a className="cta" href="mailto:info@flashimpianti.it" aria-label={`Contatta per ${service.title}`}>Richiedi informazioni</a>
       </div>
     </article>
   );
