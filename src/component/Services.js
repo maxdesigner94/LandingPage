@@ -28,18 +28,23 @@ export default function Services(){
   const containerRef = useRef(null);
 
   useEffect(()=>{
-    const items = containerRef.current.querySelectorAll(".service");
+    const container = containerRef.current;
+    if (!container) return;
+    const items = container.querySelectorAll(".service");
+    if (!items || items.length === 0) return;
+
     const obs = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting) e.target.classList.add("in-view");
       });
     },{threshold:0.25});
+
     items.forEach(i=>obs.observe(i));
     return ()=>obs.disconnect();
   },[]);
 
   return (
-    <section id="services" className="section">
+    <section id="services" className="section" role="region" aria-label="Sezione servizi">
       <div className="container">
         <div style={{marginBottom:20}}>
           <h2 style={{margin:"0 0 .4rem",fontFamily:"Poppins"}}>I nostri servizi</h2>
@@ -54,7 +59,9 @@ export default function Services(){
 
         <div id="contatti" style={{marginTop:30}}>
           <h3 style={{margin:"0 0 .6rem"}}>Contatti</h3>
-          <p className="small">Email: <strong>info@flashimpianti.it</strong> • Tel: <strong>+39 080 000000</strong></p>
+          <p className="small">
+            Email: <strong><a href="mailto:info@flashimpianti.it">info@flashimpianti.it</a></strong> • Tel: <strong><a href="tel:+39080000000">+39 080 000000</a></strong>
+          </p>
         </div>
       </div>
     </section>
